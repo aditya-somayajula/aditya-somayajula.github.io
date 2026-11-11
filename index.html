@@ -37,54 +37,42 @@
 
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* Hide scrollbar on the link row when it scrolls on small screens */
+    .nav-scroll { scrollbar-width: none; }
+    .nav-scroll::-webkit-scrollbar { display: none; }
+  </style>
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-[#0b0f19] dark:text-slate-200 font-sans antialiased min-h-screen transition-colors duration-300">
 
-  <!-- Top Menu -->
+  <!-- Top Menu: name (left) | links (middle) | theme button (right) -->
   <header class="sticky top-0 z-40 backdrop-blur-md bg-white/80 dark:bg-[#0b0f19]/85 border-b border-slate-200/80 dark:border-slate-800/80">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3 lg:py-0 lg:h-16 flex flex-wrap lg:flex-nowrap items-center gap-x-4 gap-y-2">
 
       <!-- Name (top left) -->
-      <a href="#top" class="font-display font-bold text-base sm:text-lg tracking-tight text-slate-900 dark:text-white whitespace-nowrap">
+      <a href="#top" class="order-1 font-display font-bold text-base sm:text-lg tracking-tight text-slate-900 dark:text-white whitespace-nowrap">
         Aditya Somayajula
       </a>
 
-      <div class="flex items-center gap-2">
-        <!-- Desktop links -->
-        <nav class="hidden lg:flex items-center gap-1 text-sm font-medium text-slate-600 dark:text-slate-300">
-          <a href="#about"          class="px-2.5 py-1.5 rounded-lg hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition">About</a>
-          <a href="#highlights"     class="px-2.5 py-1.5 rounded-lg hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition">Highlights</a>
-          <a href="#experience"     class="px-2.5 py-1.5 rounded-lg hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition">Experience</a>
-          <a href="#projects"       class="px-2.5 py-1.5 rounded-lg hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition">Projects</a>
-          <a href="#education"      class="px-2.5 py-1.5 rounded-lg hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition">Education</a>
-          <a href="#skills"         class="px-2.5 py-1.5 rounded-lg hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition">Skills</a>
-          <a href="#certifications" class="px-2.5 py-1.5 rounded-lg hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition">Certifications</a>
-          <a href="#contact"        class="px-2.5 py-1.5 rounded-lg hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition">Contact</a>
-        </nav>
+      <!-- Theme toggle (top right) -->
+      <button onclick="toggleTheme()" aria-label="Toggle theme" class="order-2 lg:order-3 ml-auto lg:ml-0 p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 transition">
+        <i data-lucide="sun" class="w-4 h-4 hidden dark:block text-amber-400"></i>
+        <i data-lucide="moon" class="w-4 h-4 block dark:hidden text-slate-700"></i>
+      </button>
 
-        <!-- Theme toggle -->
-        <button onclick="toggleTheme()" aria-label="Toggle theme" class="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 transition">
-          <i data-lucide="sun" class="w-4 h-4 hidden dark:block text-amber-400"></i>
-          <i data-lucide="moon" class="w-4 h-4 block dark:hidden text-slate-700"></i>
-        </button>
+      <!-- Links (between name and toggle; on small screens they sit on their own row and scroll sideways) -->
+      <nav class="order-3 lg:order-2 w-full lg:w-auto lg:flex-1 nav-scroll overflow-x-auto flex items-center lg:justify-center gap-1 text-sm font-medium text-slate-600 dark:text-slate-300">
+        <a href="#about"          class="px-2.5 py-1.5 rounded-lg whitespace-nowrap hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition">About</a>
+        <a href="#highlights"     class="px-2.5 py-1.5 rounded-lg whitespace-nowrap hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition">Highlights</a>
+        <a href="#experience"     class="px-2.5 py-1.5 rounded-lg whitespace-nowrap hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition">Experience</a>
+        <a href="#projects"       class="px-2.5 py-1.5 rounded-lg whitespace-nowrap hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition">Projects</a>
+        <a href="#education"      class="px-2.5 py-1.5 rounded-lg whitespace-nowrap hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition">Education</a>
+        <a href="#skills"         class="px-2.5 py-1.5 rounded-lg whitespace-nowrap hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition">Skills</a>
+        <a href="#certifications" class="px-2.5 py-1.5 rounded-lg whitespace-nowrap hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition">Certifications</a>
+        <a href="#contact"        class="px-2.5 py-1.5 rounded-lg whitespace-nowrap hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition">Contact</a>
+      </nav>
 
-        <!-- Mobile menu button -->
-        <button onclick="toggleMobileMenu()" aria-label="Open menu" class="lg:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 transition">
-          <i data-lucide="menu" class="w-4 h-4"></i>
-        </button>
-      </div>
-    </div>
-
-    <!-- Mobile drawer -->
-    <div id="mobileMenu" class="hidden lg:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0b0f19] px-4 pt-2 pb-4 space-y-1 text-sm">
-      <a href="#about"          onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">About</a>
-      <a href="#highlights"     onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">Highlights</a>
-      <a href="#experience"     onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">Experience</a>
-      <a href="#projects"       onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">Projects</a>
-      <a href="#education"      onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">Education</a>
-      <a href="#skills"         onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">Skills</a>
-      <a href="#certifications" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">Certifications</a>
-      <a href="#contact"        onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">Contact</a>
     </div>
   </header>
 
@@ -95,9 +83,6 @@
     function toggleTheme() {
       var isDark = document.documentElement.classList.toggle('dark');
       try { localStorage.setItem('theme', isDark ? 'dark' : 'light'); } catch (e) {}
-    }
-    function toggleMobileMenu() {
-      document.getElementById('mobileMenu').classList.toggle('hidden');
     }
     window.addEventListener('load', function () { lucide.createIcons(); });
   </script>
